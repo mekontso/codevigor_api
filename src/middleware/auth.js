@@ -9,7 +9,7 @@ const utils = require("../utils/utils")
  */
 async function authenticateJWT(req, res, next) {
     // skip the login and register routes
-    if (req.path === "/api/v1/user/login" || req.path === "/api/v1/user/register") {
+    if (req.path === "/api/v1/user/login" || req.path === "/api/v1/user/create") {
         return next()
     }
     // check if any auth header
