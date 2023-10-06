@@ -1,41 +1,46 @@
 /**
- * handle incomming request for all books
+ * controller for handlgin incomming client request for all books
  */
 const bookService = require("../services/booksServices")
+/**
+ * handle book creation request
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
 async function createBook(req, res, next) {
-    try {
-        res.json(await bookService.createBook(req.body))
-    } catch (error) {
-        console.log("Error creating book " + error.message)
-        next(error)
-    }
+    const jsonResponse = await bookService.createBook(req.body)
+    res.status(jsonResponse.status).json(jsonResponse)
 }
-
+/**
+ * handle book search request
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
 async function findAllBooks(req, res, next) {
-    try {
-        res.json(await bookService.findAllBooks())
-    } catch (error) {
-        console.log("Error finding all books " + error.message)
-        next(error)
-    }
+    const jsonResponse = await bookService.findAllBooks()
+    res.status(jsonResponse.status).json(jsonResponse)
 }
-
+/**
+ * handle book update request
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
 async function updateBook(req, res, next) {
-    try {
-        res.json(await bookService.updateBook(req.body, req.params.id))
-    } catch (error) {
-        console.log("Error updating book " + error.message)
-        next(error)
-    }
+    const jsonResponse = await bookService.updateBook(req.body, req.params.id)
+    res.status(jsonResponse.status).json(jsonResponse)
 }
-
+/**
+ * handle book delete request
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
 async function deleteBook(req, res, next) {
-    // try {
-    //     res.json(await bookService.deleteBook(req.params.id))
-    // } catch (error) {
-    //     console.log("Error deleting book " + error.message)
-    //     next(error)
-    // }
+    const jsonResponse = await bookService.deleteBook(req.params.id)
+    res.status(jsonResponse.status).json(jsonResponse)
 }
 
 module.exports = {
