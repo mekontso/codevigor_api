@@ -26,7 +26,7 @@ async function findAllBooks() {
 
 }
 /**
- * update a book with id 
+ * update a book with id
  * @param {Book} bookData new informations of the book
  * @param {String} id of the book to be updated
  * @returns 
@@ -34,6 +34,7 @@ async function findAllBooks() {
 async function updateBook(bookData, id) {
     try {
         const book = await Book.findOne({ _id: id })
+        // update if book exist
         if (book) {
             book.author = bookData.author
             book.title = bookData.title
