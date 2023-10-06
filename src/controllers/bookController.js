@@ -1,5 +1,5 @@
 /**
- * controller for handlgin incomming client request for all books
+ * controller for handling incomming client request for all books
  */
 const bookService = require("../services/booksServices")
 /**

@@ -8,13 +8,19 @@ const cors = require("cors")
 const app = express()
 const port = 3000
 const mongooseConnect = require("./src/config/mongoose")
+const auth = require("./src/middleware/auth")
+
+// auth middleware 
+app.use(auth.authenticateJWT)
 
 // configure body parser
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use("/api/v1", routes)
+
 // configure cors
 app.use(cors())
+
 // default link
 app.get("/", (req, res) => {
     res.send("App running")

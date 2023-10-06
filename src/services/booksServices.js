@@ -1,3 +1,6 @@
+/**
+ * business logic for Books
+ */
 const Book = require("../models/bookModel")
 const utils = require("../utils/utils")
 
