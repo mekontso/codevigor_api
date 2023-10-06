@@ -23,7 +23,7 @@ async function createUser(user) {
             // generate token
             const token = await utils.generateJWT(user)
             if (token != null) {
-                return utils.jsonResponse({ "message": "Success creating new user", "userId": userDatabase._id, "username": userDatabase.username, token }, false, 201)
+                return utils.jsonResponse({ "message": "Success creating new user", "userId": user._id, "username": user.username, token }, false, 201)
             } else {
                 return utils.jsonResponse("Success creating new user please login", false, 201)
             }
